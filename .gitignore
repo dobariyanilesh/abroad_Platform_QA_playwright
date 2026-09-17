@@ -14,4 +14,7 @@ test-assets/
 *.jpg
 *.jpeg
 
+# ...except the curated exploratory-testing screenshots, which are tracked
+!screenshots/**
+
 npm-debug.log*
