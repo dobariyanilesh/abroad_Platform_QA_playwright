@@ -1,0 +1,26 @@
+{
+  "name": "abroad-platform-qa-playwright",
+  "version": "1.0.0",
+  "description": "Playwright end-to-end test automation for the Abroad Platform (rc-admin.abroad.io / rc.abroad.io)",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "codegen": "playwright codegen https://rc-admin.abroad.io",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "qa",
+    "automation",
+    "e2e"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}
