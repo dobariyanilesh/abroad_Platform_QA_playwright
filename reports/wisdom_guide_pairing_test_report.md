@@ -8,7 +8,7 @@ Build › Participant prep › Wisdom Guide Pairing: the page itself (Part A) an
 | **Experience** | Transform. Discover. Grow (`6a844e22f4c72cccd7a60f35`), Published · Upcoming |
 | **Page** | `/admin/experiences/6a844e22f4c72cccd7a60f35/build/prep-guide-pairing` → "Select Guide Pairing" dialog → "Assign SOW" dialog |
 | **Tested** | 2026-09-30, QA admin account, Playwright MCP (role/label/text locators, no fixed waits) |
-| **Evidence** | Part A: `wisdom-guide-pairing/screenshots/` · Part B: `wisdom-guide-pairing/workflow/` |
+| **Evidence** | `screenshots/Wisdom Pairing/` (`page-*` for Part A, `workflow-*` for Part B) |
 
 **Result:** 57 test cases: 48 passed, 6 failed, 3 ambiguous. 8 bugs: 1 High, 3 Medium, 4 Low. Console: 0 errors across both sessions.
 
@@ -108,7 +108,7 @@ Build › Participant prep › Wisdom Guide Pairing: the page itself (Part A) an
 
 **Suggested fix:** Clear the selection when the search changes, or show "4 selected (3 hidden)" and base Select all on the full selection.
 
-**Evidence:** `screenshots/05-search-pearl-hidden-selection.png`, `screenshots/06-search-no-results-button-enabled.png`
+**Evidence:** `page-05-search-pearl-hidden-selection.png`, `page-06-search-no-results-button-enabled.png`
 
 ## PG-02: Disabled "Wisdom Guide Pairing" button gives no hint why it is disabled
 **Severity:** Low · **Area:** Page › Toolbar
@@ -119,7 +119,7 @@ Build › Participant prep › Wisdom Guide Pairing: the page itself (Part A) an
 
 **Actual:** Greyed out with no `title`, tooltip, `aria-describedby` or helper text.
 
-**Evidence:** `screenshots/07-button-disabled-no-selection-hover.png`
+**Evidence:** `page-07-button-disabled-no-selection-hover.png`
 
 ---
 
@@ -183,7 +183,7 @@ Build › Participant prep › Wisdom Guide Pairing: the page itself (Part A) an
 
 **Impact:** An admin who picks "today" from the first view saves an SOW starting a year earlier. That can break session scheduling and billing.
 
-**Evidence:** `workflow/08-datepicker-wrong-year.png`
+**Evidence:** `workflow-08-datepicker-wrong-year.png`
 
 ## WF-02: Two guides are both listed as "Bhavesh Radadiya"
 **Severity:** Medium · **Area:** Select Guide Pairing › Guide dropdown
@@ -194,7 +194,7 @@ Build › Participant prep › Wisdom Guide Pairing: the page itself (Part A) an
 
 **Actual:** "Bhavesh Radadiya" appears twice with nothing to tell them apart. The admin can't know which account they are pairing.
 
-**Evidence:** `workflow/02-guide-dropdown-duplicate-names.png`
+**Evidence:** `workflow-02-guide-dropdown-duplicate-names.png`
 
 ## WF-03: "Total Duration Of Contract" accepts 0; fee rule contradicts its message
 **Severity:** Medium · **Area:** Assign SOW › Billing
@@ -207,7 +207,7 @@ Build › Participant prep › Wisdom Guide Pairing: the page itself (Part A) an
 - Duration 0 gets no error, while every other numeric field is checked.
 - The fee shows "Please enter a one-time amount of $1 or more", yet the default **0** is accepted and saved (WF-TC-25).
 
-**Evidence:** `workflow/07-raw-field-names-in-errors.png` (same Save attempt)
+**Evidence:** `workflow-07-raw-field-names-in-errors.png` (same Save attempt)
 
 ## WF-04: Validation messages show internal field names
 **Severity:** Low · **Area:** Assign SOW › Coaching
@@ -225,7 +225,7 @@ Build › Participant prep › Wisdom Guide Pairing: the page itself (Part A) an
 
 Also, the minimum is 15 for regular session duration but 1 for growth session duration; please confirm that's intended.
 
-**Evidence:** `workflow/07-raw-field-names-in-errors.png`
+**Evidence:** `workflow-07-raw-field-names-in-errors.png`
 
 ## WF-05: Entered data is discarded without confirmation
 **Severity:** Low · **Area:** Both dialog steps
@@ -279,33 +279,35 @@ Also, the minimum is 15 for regular session duration but 1 for growth session du
 
 ## Evidence files
 
-**Part A: `wisdom-guide-pairing/screenshots/`**
+All files are in `screenshots/Wisdom Pairing/`.
+
+**Part A (page)**
 
 | File | Shows |
 |---|---|
-| 01-page-loaded.png | Initial state, 1 / 4 paired |
-| 02-select-all-checked.png | All 4 selected, button enabled |
-| 03-single-selection.png | 1 selected, header indeterminate |
-| 04-multi-selection.png | 3 selected |
-| 05-search-pearl-hidden-selection.png | PG-01: 1 visible row, "4 selected" |
-| 06-search-no-results-button-enabled.png | PG-01: empty state, button enabled |
-| 07-button-disabled-no-selection-hover.png | PG-02: disabled button, no hint |
-| 08-final-state-reset.png | Page after reset |
+| page-01-page-loaded.png | Initial state, 1 / 4 paired |
+| page-02-select-all-checked.png | All 4 selected, button enabled |
+| page-03-single-selection.png | 1 selected, header indeterminate |
+| page-04-multi-selection.png | 3 selected |
+| page-05-search-pearl-hidden-selection.png | PG-01: 1 visible row, "4 selected" |
+| page-06-search-no-results-button-enabled.png | PG-01: empty state, button enabled |
+| page-07-button-disabled-no-selection-hover.png | PG-02: disabled button, no hint |
+| page-08-final-state-reset.png | Page after reset |
 
-**Part B: `wisdom-guide-pairing/workflow/`**
+**Part B (workflow)**
 
 | File | Shows |
 |---|---|
-| 01-dialog-opened-next-disabled.png | Step 1 opened, Next disabled |
-| 02-guide-dropdown-duplicate-names.png | WF-02 duplicate "Bhavesh Radadiya" |
-| 03-guide-wise-selection-not-carried.png | A-2 Guide wise empty after Participant wise choice |
-| 04-guide-wise-filled-next-enabled.png | Guide wise filled, new row added |
-| 05-assign-sow-opened.png | Assign SOW step |
-| 06-save-empty-validation.png | Required-field validation |
-| 07-raw-field-names-in-errors.png | WF-03 / WF-04 |
-| 08-datepicker-wrong-year.png | WF-01 September 2025 |
-| 09-sow-filled-before-save.png | Valid SOW before Save |
-| 10-after-save-table-updated.png | Table after Save, 2 / 4 paired |
-| 11-repair-already-paired-no-prefill.png | A-4 paired participant, empty guide |
-| 12-guide-wise-two-rows.png | Guide wise duplicate prevention |
-| 13-participant-wise-partial-next-enabled.png | A-3 partial assignment |
+| workflow-01-dialog-opened-next-disabled.png | Step 1 opened, Next disabled |
+| workflow-02-guide-dropdown-duplicate-names.png | WF-02 duplicate "Bhavesh Radadiya" |
+| workflow-03-guide-wise-selection-not-carried.png | A-2 Guide wise empty after Participant wise choice |
+| workflow-04-guide-wise-filled-next-enabled.png | Guide wise filled, new row added |
+| workflow-05-assign-sow-opened.png | Assign SOW step |
+| workflow-06-save-empty-validation.png | Required-field validation |
+| workflow-07-raw-field-names-in-errors.png | WF-03 / WF-04 |
+| workflow-08-datepicker-wrong-year.png | WF-01 September 2025 |
+| workflow-09-sow-filled-before-save.png | Valid SOW before Save |
+| workflow-10-after-save-table-updated.png | Table after Save, 2 / 4 paired |
+| workflow-11-repair-already-paired-no-prefill.png | A-4 paired participant, empty guide |
+| workflow-12-guide-wise-two-rows.png | Guide wise duplicate prevention |
+| workflow-13-participant-wise-partial-next-enabled.png | A-3 partial assignment |
