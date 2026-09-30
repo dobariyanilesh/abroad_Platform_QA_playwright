@@ -219,6 +219,8 @@ The 9 defects map onto the 7 failed cases plus PL-10 (DEF-05) and AP-09 (DEF-07)
 | `tests/participants.spec.ts` | Cards, sorting, forms, documents, downloads, action menu, keyboard, invite → pay → copy link → remove lifecycle |
 | `tests/participants.header-actions.spec.ts` | The three header buttons (accessibility, validation, create/persist/cleanup, xlsx and zip content checks) |
 
+**Run status.** Runs against RC on 2026-09-30, `--workers=1`: 22 of 23 passed (one page-load timeout); the final full run passed **20 of 23** (15.8 min). The 3 failures in that run were not product changes: two timed out waiting for the Add participant dialog steps while the RC environment was slow (`rejects malformed emails`, `creates one participant…`), and one (`invite form requires first and last name…`) could not find *Send invite* after the dialog step stalled. The roster was checked afterwards: back to baseline, no leftover participants. Expect timing flakiness on RC until the load waits are tuned.
+
 Run: `E2E_EMAIL=… E2E_PASSWORD=… E2E_2FA_CODE=… npx playwright test --project=setup` and then `npx playwright test tests/participants*.spec.ts --project=chromium --workers=1`. The tests assert **current** behaviour; the failing checks above (DEF-01, DEF-03, DEF-04, …) are deliberately not encoded as passing tests.
 
 ## Remaining risks
